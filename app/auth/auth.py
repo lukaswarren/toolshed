@@ -34,7 +34,7 @@ def register():
                 error_message = str(e.__dict__['orig'])
                 return error_message
             else:
-                return redirect('auth.login')
+                return redirect('login')
 
         flash(error)
 
@@ -84,7 +84,7 @@ def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('login'))
 
         return view(**kwargs)
 
